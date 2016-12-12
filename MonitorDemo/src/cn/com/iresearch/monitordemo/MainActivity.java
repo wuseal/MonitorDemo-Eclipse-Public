@@ -1,5 +1,7 @@
 package cn.com.iresearch.monitordemo;
 
+import java.util.ArrayList;
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -12,11 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-
 import cn.com.iresearch.phonemonitor.library.MonitorService;
-import cn.com.iresearch.phonemonitor.library.openapi.OpenApiManager;
 
 public class MainActivity extends Activity {
 	private int REQUEST_CODE = 0x10010;
@@ -76,12 +74,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void directStartService() {
-		OpenApiManager openApiManager = new OpenApiManager(this);
-		openApiManager.getConfigSetter().setChannelId("testChannel");
-		openApiManager.getLocationInfoSetter().setMcc("460");
-		openApiManager.getLocationInfoSetter().setMnc("001");
-		openApiManager.getLocationInfoSetter().setGpsLng(12.32);
-		openApiManager.getLocationInfoSetter().setGpsLat(12.33d);
+
 		Intent intent = new Intent(MainActivity.this, MonitorService.class);
 		startService(intent);
 		button.setText("服务已经启动");
