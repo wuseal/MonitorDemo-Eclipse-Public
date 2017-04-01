@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import cn.com.iresearch.phonemonitor.library.IRSeniorMonitor;
 import cn.com.iresearch.phonemonitor.library.MonitorService;
 
 public class MainActivity extends Activity {
@@ -46,12 +47,12 @@ public class MainActivity extends Activity {
 		ArrayList<String> requests = new ArrayList<String>();
 		if (ContextCompat.checkSelfPermission(MainActivity.this,
 				Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-			// ÉêÇëWRITE_EXTERNAL_STORAGEÈ¨ÏÞ
+			// ï¿½ï¿½ï¿½ï¿½WRITE_EXTERNAL_STORAGEÈ¨ï¿½ï¿½
 			requests.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 		}
 		if (ContextCompat.checkSelfPermission(MainActivity.this,
 				Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-			// ÉêÇëREAD_PHONE_STATEÈ¨ÏÞ
+			// ï¿½ï¿½ï¿½ï¿½READ_PHONE_STATEÈ¨ï¿½ï¿½
 			requests.add(Manifest.permission.READ_PHONE_STATE);
 		}
 		if (requests.size() == 0) {
@@ -63,14 +64,12 @@ public class MainActivity extends Activity {
 	}
 
 	private void directStartService() {
-
-		Intent intent = new Intent(MainActivity.this, MonitorService.class);
-		startService(intent);
-		button.setText("·þÎñÒÑ¾­Æô¶¯");
+		IRSeniorMonitor.start(getApplicationContext());
+		button.setText("ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½");
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(getApplicationContext(), "ÄúÒÑ¾­Æô¶¯·þÎñÁË", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
