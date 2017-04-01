@@ -45,6 +45,9 @@
         </activity>
 
         <service
+            android:name="cn.com.iresearch.phonemonitor.library.heartbeat.HeartbeatJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
             android:name="cn.com.iresearch.phonemonitor.library.MonitorService"
             android:process=":phone_monitor" />
         <service
